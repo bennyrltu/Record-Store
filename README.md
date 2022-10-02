@@ -38,9 +38,9 @@
 ## 2. Sistemos architektūra
 
 **Sistema sudarys:**
-•	Kliento pusė – Vue.js
-•	Serverio pusė – .NET Core, duomenų bazė – MS SQL Server.
-Žemiau pateiktame paveiksliuke matome sistemos diegimo diagrama. Sistemos talpinimui bus pasirintkas Azure/AWS serveris. Kiekviena sistemos dalis bus sudiegta tam pačiame serveryje. Internetinę aplikaciją naudotojas galės pasiekti naudodamas HTTP protokolą (interneto naršyklę). Šioje sistemoje taip pat naudosime savo sukurtą įrašų parduotuvės aplikacijų programavimo sąsają. Saugoti įrašus naudosime MS SQL serverį.
+•	Kliento pusė – Vue.js<br/>
+•	Serverio pusė – .NET Core, duomenų bazė – MS SQL Server.<br/>
+Žemiau pateiktame paveiksliuke matome sistemos diegimo diagrama. Sistemos talpinimui bus pasirintkas Azure/AWS serveris. Kiekviena sistemos dalis bus sudiegta tam pačiame serveryje. Internetinę aplikaciją naudotojas galės pasiekti naudodamas HTTP protokolą (interneto naršyklę). Šioje sistemoje taip pat naudosime savo sukurtą įrašų parduotuvės aplikacijų programavimo sąsają. Saugoti įrašus naudosime MS SQL serverį.<br/>
 
 ![deployment](https://i.imgur.com/SIMQNJh.jpg)
 
