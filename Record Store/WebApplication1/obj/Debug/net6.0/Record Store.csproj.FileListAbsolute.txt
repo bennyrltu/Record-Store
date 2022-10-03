@@ -1,0 +1,61 @@
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\appsettings.Development.json
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\appsettings.json
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Record Store.staticwebassets.runtime.json
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Record Store.exe
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Record Store.deps.json
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Record Store.runtimeconfig.json
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Record Store.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Record Store.pdb
+D:\Record_Store\Record-Store\Record Store\WebApplication1\obj\Debug\net6.0\Record Store.csproj.AssemblyReference.cache
+D:\Record_Store\Record-Store\Record Store\WebApplication1\obj\Debug\net6.0\Record Store.GeneratedMSBuildEditorConfig.editorconfig
+D:\Record_Store\Record-Store\Record Store\WebApplication1\obj\Debug\net6.0\Record Store.AssemblyInfoInputs.cache
+D:\Record_Store\Record-Store\Record Store\WebApplication1\obj\Debug\net6.0\Record Store.AssemblyInfo.cs
+D:\Record_Store\Record-Store\Record Store\WebApplication1\obj\Debug\net6.0\Record Store.csproj.CoreCompileInputs.cache
+D:\Record_Store\Record-Store\Record Store\WebApplication1\obj\Debug\net6.0\Record Store.MvcApplicationPartsAssemblyInfo.cache
+D:\Record_Store\Record-Store\Record Store\WebApplication1\obj\Debug\net6.0\Record Store.RazorAssemblyInfo.cache
+D:\Record_Store\Record-Store\Record Store\WebApplication1\obj\Debug\net6.0\Record Store.RazorAssemblyInfo.cs
+D:\Record_Store\Record-Store\Record Store\WebApplication1\obj\Debug\net6.0\staticwebassets.build.json
+D:\Record_Store\Record-Store\Record Store\WebApplication1\obj\Debug\net6.0\staticwebassets.development.json
+D:\Record_Store\Record-Store\Record Store\WebApplication1\obj\Debug\net6.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+D:\Record_Store\Record-Store\Record Store\WebApplication1\obj\Debug\net6.0\scopedcss\bundle\Record Store.styles.css
+D:\Record_Store\Record-Store\Record Store\WebApplication1\obj\Debug\net6.0\scopedcss\projectbundle\Record Store.bundle.scp.css
+D:\Record_Store\Record-Store\Record Store\WebApplication1\obj\Debug\net6.0\Record Store.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\obj\Debug\net6.0\refint\Record Store.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\obj\Debug\net6.0\Record Store.pdb
+D:\Record_Store\Record-Store\Record Store\WebApplication1\obj\Debug\net6.0\Record Store.genruntimeconfig.cache
+D:\Record_Store\Record-Store\Record Store\WebApplication1\obj\Debug\net6.0\ref\Record Store.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Humanizer.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.Identity.Client.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\System.Drawing.Common.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\System.Runtime.Caching.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\System.Security.Permissions.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\System.Windows.Extensions.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\obj\Debug\net6.0\Record Store.csproj.CopyComplete
