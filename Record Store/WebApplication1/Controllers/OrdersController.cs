@@ -25,7 +25,7 @@ namespace Record_Store.Controllers
         }
 
         [HttpGet(Name = "GetOrders")]
-        public async Task<IEnumerable<OrderDTO>> GetManyPaging([FromQuery] OrderSearchParameters searchParameters)
+        public async Task<IEnumerable<OrderDTO>> GetManyPaging([FromQuery] SearchParameters searchParameters)
         {
             var orders = await _ordersRepository.GetOrdersManyPagedAsync(searchParameters);
 
@@ -59,7 +59,7 @@ namespace Record_Store.Controllers
             var links = CreateLinks(orderID);
 
             var OrderDTO = new OrderDTO(order.ID, order.Name, order.Price, order.CreatedDate);
-            return Ok(new { Resource = OrderDTO, Links = links});
+            return Ok(new { Resource = OrderDTO, Links = links });
         }
 
         //[HttpGet(Name = "GetOrder")]
@@ -102,7 +102,7 @@ namespace Record_Store.Controllers
             return Ok(new OrderDTO(order.ID, order.Name, order.Price, order.CreatedDate));
         }
 
-        [HttpDelete("{orderID}", Name ="RemoveOrder")]
+        [HttpDelete("{orderID}", Name = "RemoveOrder")]
         [Route("{orderID}")]
         public async Task<ActionResult> Remove(uint orderID)
         {
@@ -117,7 +117,7 @@ namespace Record_Store.Controllers
             return NoContent();
         }
 
-        private string? CreateOrdersResourceUri(OrderSearchParameters orderSearchParameters, ResourceUriType type)
+        private string? CreateOrdersResourceUri(SearchParameters orderSearchParameters, ResourceUriType type)
         {
             return type switch
             {

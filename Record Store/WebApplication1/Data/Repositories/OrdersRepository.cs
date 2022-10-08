@@ -9,7 +9,7 @@ namespace Record_Store.Data.Repositories
     {
         Task<Order?> GetOrder(uint orderID);
         Task<IReadOnlyList<Order>> GetOrdersManyAsync();
-        Task<PageList<Order>> GetOrdersManyPagedAsync(OrderSearchParameters orderSearchParameters);
+        Task<PageList<Order>> GetOrdersManyPagedAsync(SearchParameters orderSearchParameters);
         Task CreateOrder(Order order);
         Task UpdateOrder(Order order);
         Task RemoveOrder(Order order);
@@ -35,7 +35,7 @@ namespace Record_Store.Data.Repositories
             return await _rsDbContext.Orders.ToListAsync();
         }
 
-        public async Task<PageList<Order>> GetOrdersManyPagedAsync(OrderSearchParameters orderSearchParameters)
+        public async Task<PageList<Order>> GetOrdersManyPagedAsync(SearchParameters orderSearchParameters)
         {
             var quaryable = _rsDbContext.Orders.AsQueryable().OrderBy(o => o.ID);
             return await PageList<Order>.CreateAsync(quaryable, orderSearchParameters.PageNumber, orderSearchParameters.PageSize);

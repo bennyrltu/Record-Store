@@ -12,7 +12,7 @@ using Record_Store.Data;
 namespace Record_Store.Migrations
 {
     [DbContext(typeof(RsDbContext))]
-    [Migration("20221003123328_new")]
+    [Migration("20221008151300_new")]
     partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -102,7 +102,7 @@ namespace Record_Store.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<DateTime>("LastUpdated")
+                    b.Property<DateTime?>("LastUpdated")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Name")

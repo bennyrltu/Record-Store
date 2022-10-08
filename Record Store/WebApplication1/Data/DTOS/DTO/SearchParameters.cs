@@ -1,6 +1,6 @@
 ﻿namespace Record_Store.Data.DTOS.Orders
 {
-    public class OrderSearchParameters
+    public class SearchParameters
     {
         private uint _pageSize = 2;
         private const uint MaxPageSize = 50;

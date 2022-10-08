@@ -6,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<RsDbContext>();
 builder.Services.AddTransient<IOrdersRepository, OrdersRepository>();
+builder.Services.AddTransient<IRecordsRepository, RecordsRepository>();
+builder.Services.AddTransient<IRatingsRepository, RatingsRepository>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
