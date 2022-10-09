@@ -11,7 +11,7 @@ namespace Record_Store.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSqlLocalDb;database=RecordStore;Trusted_Connection=True;");
         }
     }
 }

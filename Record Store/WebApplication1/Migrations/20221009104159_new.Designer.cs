@@ -12,7 +12,7 @@ using Record_Store.Data;
 namespace Record_Store.Migrations
 {
     [DbContext(typeof(RsDbContext))]
-    [Migration("20221008151300_new")]
+    [Migration("20221009104159_new")]
     partial class @new
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

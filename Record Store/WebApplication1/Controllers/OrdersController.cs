@@ -79,7 +79,7 @@ namespace Record_Store.Controllers
         [HttpPost]
         public async Task<ActionResult<OrderDTO>> Create(CreateOrderDTO createOrderDTO)
         {
-            var order = new Order { Name = createOrderDTO.Name, Price=createOrderDTO.Price, CreatedDate=DateTime.UtcNow };
+            var order = new Order { Name = createOrderDTO.Name, Price=createOrderDTO.Price, CreatedDate=DateTime.UtcNow, IsActive = true};
             await _ordersRepository.CreateOrder(order);
 
             //return CreatedAtAction("GetOrder", new { orderID = order.ID }, new OrderDTO(order.Name, order.Price,order.CreatedDate));
