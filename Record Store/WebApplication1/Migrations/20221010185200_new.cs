@@ -38,14 +38,14 @@ namespace Record_Store.Migrations
                     CreationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastUpdated = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    OrderID = table.Column<long>(type: "bigint", nullable: false)
+                    OrderId = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Recordings", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Recordings_Orders_OrderID",
-                        column: x => x.OrderID,
+                        name: "FK_Recordings_Orders_OrderId",
+                        column: x => x.OrderId,
                         principalTable: "Orders",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
@@ -80,9 +80,9 @@ namespace Record_Store.Migrations
                 column: "RecordingID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Recordings_OrderID",
+                name: "IX_Recordings_OrderId",
                 table: "Recordings",
-                column: "OrderID");
+                column: "OrderId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

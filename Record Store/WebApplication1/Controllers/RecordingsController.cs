@@ -8,8 +8,7 @@ using System.Text.Json;
 namespace Record_Store.Controllers
 {
     [ApiController]
-    [Route("recordings")]
-    //[Route("api/orders/{orderID}/recordings")]
+    [Route("api/orders/{orderID}/recordings")]
     public class RecordingsController : ControllerBase
     {
         private readonly IRecordsRepository _recordingsRepository;
@@ -18,69 +17,64 @@ namespace Record_Store.Controllers
             _recordingsRepository= recordingsRepository;
         }
 
-        //[HttpGet]
-        //public async Task<IEnumerable<RecordDTO>> GetMany()
-        //{
-        //    var recordings = await _recordingsRepository.GetRecordingsManyAsync();
-
-        //    return recordings.Select(o => new RecordDTO(o.ID, o.Name, o.Description, o.Price, o.CreationDate, o.LastUpdated));
-        //}
-
-
-
-        [HttpGet(Name = "GetRecording")]
-        public async Task<ActionResult<RecordDTO>> Get(uint recordingID)
+        [HttpGet]
+        public async Task<IEnumerable<RecordDTO>> GetMany(uint orderID)
         {
-            var recording = await _recordingsRepository.GetRecording(recordingID);
+            var recordings = await _recordingsRepository.GetRecordingsManyAsync(orderID);
 
-            if (recording == null)
-            {
-                return NotFound();
-            }
+            return recordings.Select(o => new RecordDTO(o.ID, o.Name, o.Description, o.Price, o.CreationDate));
+        }
 
-            return new RecordDTO(recording.ID, recording.Name, recording.Description, recording.Price, recording.CreationDate);
+        [HttpGet("{recordId}")]
+        public async Task<ActionResult<RecordDTO>> GetRecording(uint orderID, uint recordId)
+        {
+            var o = await _recordingsRepository.GetRecording(orderID, recordId);
+            if (o == null) return NotFound();
+
+            return new RecordDTO(o.ID, o.Name, o.Description, o.Price, o.CreationDate);
         }
 
         [HttpPost]
-        public async Task<ActionResult<RecordDTO>> Create(CreateRecordDTO createRecordDTO)
+        public async Task<ActionResult<RecordDTO>> PostAsync(uint orderId, CreateRecordDTO create)
         {
-            var recording = new Recording { Name = createRecordDTO.Name, Description = createRecordDTO.Description, Price=createRecordDTO.Price, CreationDate=DateTime.UtcNow };
+            var order = await _recordingsRepository.GetRecordingsManyAsync(orderId);
+            if (order == null) return NotFound($"Couldn't find a order with id of {orderId}");
+
+            var recording = new Recording { Name = create.Name, Description = create.Description, Price=create.Price, CreationDate=DateTime.UtcNow, IsActive = true};
+            recording.OrderId=orderId;
             await _recordingsRepository.CreateRecording(recording);
 
-            //return CreatedAtAction("GetOrder", new { orderID = order.ID }, new RecordDTO(order.Name, order.Price,order.CreatedDate));
-            //return CreatedAtAction(nameof(Get), new RecordDTO(order.Name, order.Price, order.CreatedDate));
             return Created("", new RecordDTO(recording.ID, recording.Name, recording.Description, recording.Price, recording.CreationDate));
         }
 
-        [HttpPut]
-        public async Task<ActionResult<RecordDTO>> Update(uint recordID, UpdateRecordDTO updateRecordDTO)
+        [HttpPut("{recordID}")]
+        public async Task<ActionResult<OrderDTO>> Update(uint orderID, uint recordID, UpdateRecordDTO update)
         {
-            var recording = await _recordingsRepository.GetRecording(recordID);
+            var order = await _recordingsRepository.GetRecordingsManyAsync(orderID);
+            if (order == null) return NotFound($"Couldn't find a order with id of {orderID}");
 
-            if (recording == null)
-            {
+            var oldRecording = await _recordingsRepository.GetRecording(orderID, recordID);
+            if (oldRecording == null)
                 return NotFound();
-            }
-            recording.Name = updateRecordDTO.Name;
-            recording.Description = updateRecordDTO.Description;
-            recording.Price = updateRecordDTO.Price;
-            recording.LastUpdated = DateTime.UtcNow;
-            await _recordingsRepository.UpdateRecording(recording);
-            return Ok(new RecordDTO(recording.ID, recording.Name, recording.Description, recording.Price, recording.CreationDate));
+
+            oldRecording.Name = update.Name;
+            oldRecording.Description = update.Description;
+            oldRecording.Price = update.Price;
+            oldRecording.CreationDate=DateTime.UtcNow;
+            await _recordingsRepository.UpdateRecording(oldRecording);
+            return Ok(new RecordDTO(oldRecording.ID, oldRecording.Name, oldRecording.Description, oldRecording.Price, oldRecording.CreationDate));
         }
 
-
-        [HttpDelete("recordings", Name = "RemoveRecording")]
-        public async Task<ActionResult> Remove(uint recordingID)
+        [HttpDelete("{recordId}")]
+        public async Task<ActionResult> DeleteAsync(uint orderID, uint recordId)
         {
-            var recording = await _recordingsRepository.GetRecording(recordingID);
-
+            var recording = await _recordingsRepository.GetRecording(orderID, recordId);
             if (recording == null)
-            {
                 return NotFound();
-            }
+
             await _recordingsRepository.RemoveRecording(recording);
 
+            // 204
             return NoContent();
         }
     }

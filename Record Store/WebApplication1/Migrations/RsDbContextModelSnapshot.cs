@@ -107,7 +107,7 @@ namespace Record_Store.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("OrderID")
+                    b.Property<long>("OrderId")
                         .HasColumnType("bigint");
 
                     b.Property<decimal>("Price")
@@ -115,7 +115,7 @@ namespace Record_Store.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("OrderID");
+                    b.HasIndex("OrderId");
 
                     b.ToTable("Recordings");
                 });
@@ -135,7 +135,7 @@ namespace Record_Store.Migrations
                 {
                     b.HasOne("Record_Store.Entity.Order", "Order")
                         .WithMany()
-                        .HasForeignKey("OrderID")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

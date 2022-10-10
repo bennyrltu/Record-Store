@@ -9,8 +9,7 @@ using System.Text.Json;
 namespace Record_Store.Controllers
 {
     [ApiController]
-    [Route("ratings")]
-    //[Route("api/orders/{orderID}/recordings/{recordingID}")]
+    [Route("api/orders/{orderID}/recordings/{recordingID}/ratings")]
     public class RatingsController : ControllerBase
     {
         private readonly IRatingsRepository _ratingsRepository;
@@ -20,103 +19,61 @@ namespace Record_Store.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<RatingDTO>> GetMany()
+        public async Task<IEnumerable<RatingDTO>> GetMany(uint recordingID)
         {
-            var ratings = await _ratingsRepository.GetRatingsManyAsync();
+            var ratings = await _ratingsRepository.GetRatingsManyAsync(recordingID);
 
             return ratings.Select(o => new RatingDTO(o.ID, o.Name, o.GivenRating, o.RatingDate));
         }
 
-        //[HttpGet(Name = "GetRatings")]
-        //public async Task<IEnumerable<RatingDTO>> GetManyPaging([FromQuery] SearchParameters searchParameters)
-        //{
-        //    var orders = await _ratingsRepository.GetRatingsManyPagedAsync(searchParameters);
-
-        //    var previousPage = orders.hasPrevious ? CreateOrdersResourceUri(searchParameters, ResourceUriType.PreviousPage) : null;
-        //    var nextPage = orders.hasNext ? CreateOrdersResourceUri(searchParameters, ResourceUriType.NextPage) : null;
-
-        //    var paginationMetaData = new
-        //    {
-        //        totalCount = orders.TotalCount,
-        //        pageSize = orders.PageSize,
-        //        currentPage = orders.CurrentPage,
-        //        totalPages = orders.TotalPages,
-        //        previousPage,
-        //        nextPage
-        //    };
-
-        //    Response.Headers.Add("Pagination", JsonSerializer.Serialize(paginationMetaData));
-        //    return orders.Select(o => new RatingDTO(o.ID, o.Name, o.Price, o.CreatedDate));
-        //}
-
-        //[HttpGet("{orderID}", Name = "GetOrder")]
-        //public async Task<ActionResult<RatingDTO>> Get(uint orderID)
-        //{
-        //    var order = await _ratingsRepository.GetOrder(orderID);
-
-        //    if (order == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    var links = CreateLinks(orderID);
-
-        //    var RatingDTO = new RatingDTO(order.ID, order.Name, order.Price, order.CreatedDate);
-        //    return Ok(new { Resource = RatingDTO, Links = links });
-        //}
-
-        [HttpGet(Name = "GetRating")]
-        [Route("{orderID}")]
-        public async Task<ActionResult<RatingDTO>> Get(uint recordID)
+        [HttpGet("{ratingId}")]
+        public async Task<ActionResult<RatingDTO>> GetRating(uint recordingID, uint ratingID)
         {
-            var order = await _ratingsRepository.GetRating(recordID);
+            var o = await _ratingsRepository.GetRating(recordingID, ratingID);
+            if (o == null) return NotFound();
 
-            if (order == null)
-            {
-                return NotFound();
-            }
-
-            return new RatingDTO(order.ID, order.Name, order.GivenRating, order.RatingDate);
+            return new RatingDTO(o.ID, o.Name, o.GivenRating, o.RatingDate);
         }
 
         [HttpPost]
-        public async Task<ActionResult<RatingDTO>> Create(CreateRatingDTO createRatingDTO)
+        public async Task<ActionResult<RatingDTO>> PostAsync(uint recordingID, CreateRatingDTO create)
         {
-            var rating = new Rating { Name = createRatingDTO.Name, GivenRating=createRatingDTO.Rating, RatingDate=DateTime.UtcNow };
+            var record = await _ratingsRepository.GetRatingsManyAsync(recordingID);
+            if (record == null) return NotFound($"Couldn't find a order with id of {recordingID}");
+
+            var rating = new Rating { Name = create.Name, GivenRating = create.Rating, RatingDate=DateTime.UtcNow };
+            rating.RecordingID=recordingID;
             await _ratingsRepository.CreateReating(rating);
 
-            //return CreatedAtAction("GetOrder", new { orderID = order.ID }, new RatingDTO(order.Name, order.Price,order.CreatedDate));
-            //return CreatedAtAction(nameof(Get), new RatingDTO(order.Name, order.Price, order.CreatedDate));
             return Created("", new RatingDTO(rating.ID, rating.Name, rating.GivenRating, rating.RatingDate));
         }
 
-        [HttpPut]
-        [Route("{orderID}")]
-        public async Task<ActionResult<RatingDTO>> Update(uint recordID, UpdateRatingDTO updateRatingDTO)
+        [HttpPut("{ratingID}")]
+        public async Task<ActionResult<RatingDTO>> Update(uint recordingID, uint ratingID, UpdateRatingDTO update)
         {
-            var rating = await _ratingsRepository.GetRating(recordID);
+            var record = await _ratingsRepository.GetRatingsManyAsync(recordingID);
+            if (record == null) return NotFound($"Couldn't find a order with id of {recordingID}");
 
-            if (rating == null)
-            {
+            var oldRating = await _ratingsRepository.GetRating(recordingID, ratingID);
+            if (oldRating == null)
                 return NotFound();
-            }
-            rating.GivenRating = updateRatingDTO.Rating;
-            await _ratingsRepository.UpdateRating(rating);
-            return Ok(new RatingDTO(rating.ID, rating.Name, rating.GivenRating, rating.RatingDate));
+
+            oldRating.GivenRating = update.Rating;
+            oldRating.RatingDate = DateTime.UtcNow;
+            await _ratingsRepository.UpdateRating(oldRating);
+            return Ok(new RatingDTO(oldRating.ID, oldRating.Name, oldRating.GivenRating, oldRating.RatingDate));
         }
 
-        [HttpDelete("{orderID}", Name = "RemoveRating")]
-        [Route("{orderID}")]
-        public async Task<ActionResult> Remove(uint recordID)
+        [HttpDelete("{ratingId}")]
+        public async Task<ActionResult> DeleteAsync(uint recordingID, uint ratingID)
         {
-            var rating = await _ratingsRepository.GetRating(recordID);
-
+            var rating = await _ratingsRepository.GetRating(recordingID, ratingID);
             if (rating == null)
-            {
                 return NotFound();
-            }
+
             await _ratingsRepository.RemoveRating(rating);
 
+            // 204
             return NoContent();
         }
     }

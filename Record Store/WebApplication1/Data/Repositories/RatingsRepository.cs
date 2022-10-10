@@ -8,8 +8,8 @@ namespace Record_Store.Data.Repositories
 {
     public interface IRatingsRepository
     {
-        Task<Rating?> GetRating(uint orderID);
-        Task<IReadOnlyList<Rating>> GetRatingsManyAsync();
+        Task<Rating?> GetRating(uint recordingID, uint ratingID);
+        Task<IReadOnlyList<Rating>> GetRatingsManyAsync(uint recordingID);
         Task<PageList<Rating>> GetRatingsManyPagedAsync(SearchParameters orderSearchParameters);
         Task CreateReating(Rating rating);
         Task UpdateRating(Rating rating);
@@ -25,15 +25,15 @@ namespace Record_Store.Data.Repositories
             _rsDbContext=rsDbContext;
         }
 
-        public async Task<Rating?> GetRating(uint ratingID)
+        public async Task<Rating?> GetRating(uint recordingID, uint ratingID)
         {
-            return await _rsDbContext.Ratings.FirstOrDefaultAsync(o => o.ID == ratingID);
+            return await _rsDbContext.Ratings.FirstOrDefaultAsync( o => o.RecordingID == recordingID && o.ID == ratingID);
         }
 
 
-        public async Task<IReadOnlyList<Rating>> GetRatingsManyAsync()
+        public async Task<IReadOnlyList<Rating>> GetRatingsManyAsync(uint recordingID)
         {
-            return await _rsDbContext.Ratings.ToListAsync();
+            return await _rsDbContext.Ratings.Where(o => o.RecordingID == recordingID).ToListAsync();
         }
 
         public async Task<PageList<Rating>> GetRatingsManyPagedAsync(SearchParameters orderSearchParameters)

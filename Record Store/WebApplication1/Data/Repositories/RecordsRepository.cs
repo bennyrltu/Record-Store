@@ -7,8 +7,8 @@ namespace Record_Store.Data.Repositories
 {
     public interface IRecordsRepository
     {
-        Task<Recording?> GetRecording(uint recordingID);
-        Task<IReadOnlyList<Recording>> GetRecordingsManyAsync();
+        Task<Recording?> GetRecording(uint orderID, uint recordingID);
+        Task<IReadOnlyList<Recording>> GetRecordingsManyAsync(uint orderID);
         Task<PageList<Recording>> GetRecordingsManyPagedAsync(SearchParameters recordSearchParameters);
         Task CreateRecording(Recording recording);
         Task UpdateRecording(Recording recording);
@@ -25,15 +25,15 @@ namespace Record_Store.Data.Repositories
             _rsDbContext=rsDbContext;
         }
 
-        public async Task<Recording?> GetRecording(uint recordingID)
+        public async Task<Recording?> GetRecording(uint orderID, uint recordingID)
         {
-            return await _rsDbContext.Recordings.FirstOrDefaultAsync(o => o.ID == recordingID);
+            return await _rsDbContext.Recordings.FirstOrDefaultAsync( o=> o.OrderId == orderID && o.ID == recordingID);
         }
 
 
-        public async Task<IReadOnlyList<Recording>> GetRecordingsManyAsync()
+        public async Task<IReadOnlyList<Recording>> GetRecordingsManyAsync(uint orderID)
         {
-            return await _rsDbContext.Recordings.ToListAsync();
+            return await _rsDbContext.Recordings.Where(o => o.OrderId == orderID).ToListAsync();
         }
 
         public async Task<PageList<Recording>> GetRecordingsManyPagedAsync(SearchParameters orderSearchParameters)

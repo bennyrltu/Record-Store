@@ -9,6 +9,7 @@
         public DateTime CreationDate { get; set; } = DateTime.UtcNow;
         public DateTime? LastUpdated { get; set; }
         public bool IsActive { get; set; }
+        public uint OrderId { get; set; }
         public Order Order { get; set; }
 
     }
