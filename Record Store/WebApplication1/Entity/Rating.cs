@@ -1,4 +1,7 @@
-﻿namespace Record_Store.Entity
+﻿using Record_Store.Auth;
+using System.ComponentModel.DataAnnotations;
+
+namespace Record_Store.Entity
 {
     public class Rating
     {

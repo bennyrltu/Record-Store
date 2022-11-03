@@ -1,8 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Record_Store.Auth;
 using Record_Store.Data;
 using Record_Store.Data.DTOS.Orders;
 using Record_Store.Data.Repositories;
 using Record_Store.Entity;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text.Json;
 
 namespace Record_Store.Controllers
@@ -12,9 +16,11 @@ namespace Record_Store.Controllers
     public class RecordingsController : ControllerBase
     {
         private readonly IRecordsRepository _recordingsRepository;
-        public RecordingsController(IRecordsRepository recordingsRepository)
+        private readonly IAuthorizationService _authorizationService;
+        public RecordingsController(IRecordsRepository recordingsRepository, IAuthorizationService authorizationService)
         {
             _recordingsRepository= recordingsRepository;
+            _authorizationService=authorizationService;     
         }
 
         [HttpGet]
@@ -60,8 +66,17 @@ namespace Record_Store.Controllers
             oldRecording.Name = update.Name;
             oldRecording.Description = update.Description;
             oldRecording.Price = update.Price;
-            oldRecording.CreationDate=DateTime.UtcNow;
-            await _recordingsRepository.UpdateRecording(oldRecording);
+            oldRecording.LastUpdated=DateTime.UtcNow;
+
+            if (oldRecording.Price == 0)
+            {
+                oldRecording.IsActive = false;
+            }
+            else
+            {
+                oldRecording.IsActive = true;
+            }
+                await _recordingsRepository.UpdateRecording(oldRecording);
             return Ok(new RecordDTO(oldRecording.ID, oldRecording.Name, oldRecording.Description, oldRecording.Price, oldRecording.CreationDate));
         }
 

@@ -1,4 +1,7 @@
-﻿namespace Record_Store.Entity
+﻿using Record_Store.Auth;
+using System.ComponentModel.DataAnnotations;
+
+namespace Record_Store.Entity
 {
     public class Recording
     {
@@ -11,6 +14,5 @@
         public bool IsActive { get; set; }
         public uint OrderId { get; set; }
         public Order Order { get; set; }
-
     }
 }

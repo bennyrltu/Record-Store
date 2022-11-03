@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Record_Store.Auth;
 using Record_Store.Data;
 using Record_Store.Data.DTOS.Orders;
 using Record_Store.Data.Repositories;
@@ -13,9 +15,11 @@ namespace Record_Store.Controllers
     public class RatingsController : ControllerBase
     {
         private readonly IRatingsRepository _ratingsRepository;
-        public RatingsController(IRatingsRepository ratingsrepository)
+        private readonly IAuthorizationService _authorizationService;
+        public RatingsController(IRatingsRepository ratingsrepository, IAuthorizationService authorizationService)
         {
             _ratingsRepository= ratingsrepository;
+            _authorizationService=authorizationService;
         }
 
         [HttpGet]
@@ -41,7 +45,7 @@ namespace Record_Store.Controllers
             var record = await _ratingsRepository.GetRatingsManyAsync(recordingID);
             if (record == null) return NotFound($"Couldn't find a order with id of {recordingID}");
 
-            var rating = new Rating { Name = create.Name, GivenRating = create.Rating, RatingDate=DateTime.UtcNow };
+            var rating = new Rating { Name = create.Name, GivenRating = create.Rating, RatingDate=DateTime.UtcNow};
             rating.RecordingID=recordingID;
             await _ratingsRepository.CreateReating(rating);
 

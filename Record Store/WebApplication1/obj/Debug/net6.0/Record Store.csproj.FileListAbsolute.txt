@@ -59,3 +59,10 @@ D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\runti
 D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 D:\Record_Store\Record-Store\Record Store\WebApplication1\obj\Debug\net6.0\Record Store.csproj.CopyComplete
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+D:\Record_Store\Record-Store\Record Store\WebApplication1\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
